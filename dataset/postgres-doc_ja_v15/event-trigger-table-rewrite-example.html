@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>40.5. テーブル書き換えイベントトリガの例</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="prev" href="event-trigger-example.html" title="40.4. 完全なイベントトリガの例" /><link rel="next" href="rules.html" title="第41章 ルールシステム" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><style type="text/css"><!--
+h1.TITLE {clear:both;}
+.versions {
+  float:right;
+  margin-top:-0.2em;
+  margin-bottom:0.5em;
+  width: auto;
+  padding:0.4em 1em;
+  border:solid 1px #e0e0e0;
+  border-radius:0.5em;
+  background:#f3f3f3;
+  background-image:-webkit-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-moz-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-o-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:linear-gradient(#fbfbfb, #ebebeb);
+  box-shadow:0 3px 8px -3px #000;
+}
+.versions .label {
+  cursor:pointer;
+}
+.versions .label:hover {
+  text-decoration:underline;
+}
+.versions .list {
+  display:none;
+}
+.versions .list-toggle {
+  display:inline;
+}
+.versions .me {
+  padding:0 0.2em;
+  border:solid 2px #e88;
+  border-radius:0.3em;
+  background:#fbfbfb;
+  font-weight:bold;
+}
+.versions .other {
+  font-weight:bold;
+}
+.versions .unsup {
+  color:#aaa;
+}
+.versions .unsup a {
+  color:#aaa;
+}
+
+@media print {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:visited {
+    color: inherit;
+  }
+  .NAVHEADER, .versions, .NAVFOOTER {
+    display: none;
+  }
+}
+--></style><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"><!--
+  $(function(){
+      $(".versions .label").bind("click", function(){
+          $(".versions .list").toggleClass("list-toggle");
+      })
+  });
+--></script></head><body id="docContent" class="container-fluid col-10"><div class="versions"><span class="label">他のバージョンの文書</span> <span class="list">： <span class="me">15</span> | <span class="other"><a href="/document/14/html/event-trigger-table-rewrite-example.html">14</a><span> | <span class="other"><a href="/document/13/html/event-trigger-table-rewrite-example.html">13</a><span> | <span class="other"><a href="/document/12/html/event-trigger-table-rewrite-example.html">12</a><span> | <span class="other"><a href="/document/11/html/event-trigger-table-rewrite-example.html">11</a><span> | <span class="other"><a href="/document/10/html/event-trigger-table-rewrite-example.html">10</a><span> | <span class="other"><a href="/document/9.6/html/event-trigger-table-rewrite-example.html">9.6</a><span> | <span class="other"><a href="/document/9.5/html/event-trigger-table-rewrite-example.html">9.5</a><span> | <span class="unsup"><a href="/document/9.4/index.html">9.4</a></span> | <span class="unsup"><a href="/document/9.3/index.html">9.3</a></span> | <span class="unsup"><a href="/document/9.2/index.html">9.2</a></span> | <span class="unsup"><a href="/document/9.1/index.html">9.1</a></span> | <span class="unsup"><a href="/document/9.0/index.html">9.0</a></span> | <span class="unsup"><a href="/document/8.4/index.html">8.4</a></span> | <span class="unsup"><a href="/document/8.3/index.html">8.3</a></span> | <span class="unsup"><a href="/document/8.2/index.html">8.2</a></span> | <span class="unsup"><a href="/document/8.1/index.html">8.1</a></span> | <span class="unsup"><a href="/document/8.0/index.html">8.0</a></span> | <span class="unsup"><a href="/document/7.4/index.html">7.4</a></span> | <span class="unsup"><a href="/document/7.3/index.html">7.3</a></span> | <span class="unsup"><a href="/document/7.2/index.html">7.2</a></span></span></div><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="4" align="center"><a accesskey="h" href="index.html">PostgreSQL 15.4文書</a></th></tr><tr><td width="10%" align="left"></td><td width="10%" align="left"></td><td width="60%" align="center"><a href="event-triggers.html" title="第40章 イベントトリガ">第40章 イベントトリガ</a></td><td width="20%" align="right"></td></tr><tr><td width="10%" align="left"><a accesskey="p" href="event-trigger-example.html" title="40.4. 完全なイベントトリガの例">前へ</a> </td><td width="10%" align="left"><a accesskey="u" href="event-triggers.html" title="第40章 イベントトリガ">上へ</a></td><td width="60%" align="center">40.5. テーブル書き換えイベントトリガの例</td><td width="20%" align="right"> <a accesskey="n" href="rules.html" title="第41章 ルールシステム">次へ</a></td></tr></table><hr /></div><div class="sect1" id="EVENT-TRIGGER-TABLE-REWRITE-EXAMPLE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">40.5. テーブル書き換えイベントトリガの例</h2></div></div></div><!--
+   <title>A Table Rewrite Event Trigger Example</title>
+--><p>
+<!--
+    Thanks to the <literal>table_rewrite</literal> event, it is possible to implement
+    a table rewriting policy only allowing the rewrite in maintenance windows.
+-->
+<code class="literal">table_rewrite</code>イベントのおかげで、メンテナンスウィンドウでの書き換えを許可するだけでテーブル書き換えポリシーを実装できます。
+   </p><p>
+<!--
+    Here's an example implementing such a policy.
+-->
+これが、そのようなポリシーを実装した例です。
+</p><pre class="programlisting">
+CREATE OR REPLACE FUNCTION no_rewrite()
+ RETURNS event_trigger
+ LANGUAGE plpgsql AS
+$$
+---
+<!--
+&#45;&#45;- Implement local Table Rewriting policy:
+&#45;&#45;-   public.foo is not allowed rewriting, ever
+&#45;&#45;-   other tables are only allowed rewriting between 1am and 6am
+&#45;&#45;-   unless they have more than 100 blocks
+-->
+--- ローカルテーブル書き換えポリシーの実装:
+---   public.fooは書き換えが許可されていません
+---   その他のテーブルは100ブロック以下であれば、
+---   午前1時から午前6時までの間だけ書き換えが許可されます
+---
+DECLARE
+  table_oid oid := pg_event_trigger_table_rewrite_oid();
+  current_hour integer := extract('hour' from current_time);
+  pages integer;
+  max_pages integer := 100;
+BEGIN
+  IF pg_event_trigger_table_rewrite_oid() = 'public.foo'::regclass
+  THEN
+        RAISE EXCEPTION 'you''re not allowed to rewrite the table %',
+                        table_oid::regclass;
+  END IF;
+
+  SELECT INTO pages relpages FROM pg_class WHERE oid = table_oid;
+  IF pages &gt; max_pages
+  THEN
+        RAISE EXCEPTION 'rewrites only allowed for table with less than % pages',
+                        max_pages;
+  END IF;
+
+  IF current_hour NOT BETWEEN 1 AND 6
+  THEN
+        RAISE EXCEPTION 'rewrites only allowed between 1am and 6am';
+  END IF;
+END;
+$$;
+
+CREATE EVENT TRIGGER no_rewrite_allowed
+                  ON table_rewrite
+   EXECUTE FUNCTION no_rewrite();
+</pre><p>
+   </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="event-trigger-example.html" title="40.4. 完全なイベントトリガの例">前へ</a> </td><td width="20%" align="center"><a accesskey="u" href="event-triggers.html" title="第40章 イベントトリガ">上へ</a></td><td width="40%" align="right"> <a accesskey="n" href="rules.html" title="第41章 ルールシステム">次へ</a></td></tr><tr><td width="40%" align="left" valign="top">40.4. 完全なイベントトリガの例 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 15.4文書">ホーム</a></td><td width="40%" align="right" valign="top"> 第41章 ルールシステム</td></tr></table></div></body></html>

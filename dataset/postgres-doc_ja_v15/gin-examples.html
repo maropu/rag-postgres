@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>70.7. 例</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="prev" href="gin-limit.html" title="70.6. 制限" /><link rel="next" href="brin.html" title="第71章 BRINインデックス" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><style type="text/css"><!--
+h1.TITLE {clear:both;}
+.versions {
+  float:right;
+  margin-top:-0.2em;
+  margin-bottom:0.5em;
+  width: auto;
+  padding:0.4em 1em;
+  border:solid 1px #e0e0e0;
+  border-radius:0.5em;
+  background:#f3f3f3;
+  background-image:-webkit-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-moz-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-o-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:linear-gradient(#fbfbfb, #ebebeb);
+  box-shadow:0 3px 8px -3px #000;
+}
+.versions .label {
+  cursor:pointer;
+}
+.versions .label:hover {
+  text-decoration:underline;
+}
+.versions .list {
+  display:none;
+}
+.versions .list-toggle {
+  display:inline;
+}
+.versions .me {
+  padding:0 0.2em;
+  border:solid 2px #e88;
+  border-radius:0.3em;
+  background:#fbfbfb;
+  font-weight:bold;
+}
+.versions .other {
+  font-weight:bold;
+}
+.versions .unsup {
+  color:#aaa;
+}
+.versions .unsup a {
+  color:#aaa;
+}
+
+@media print {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:visited {
+    color: inherit;
+  }
+  .NAVHEADER, .versions, .NAVFOOTER {
+    display: none;
+  }
+}
+--></style><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"><!--
+  $(function(){
+      $(".versions .label").bind("click", function(){
+          $(".versions .list").toggleClass("list-toggle");
+      })
+  });
+--></script></head><body id="docContent" class="container-fluid col-10"><div class="versions"><span class="label">他のバージョンの文書</span> <span class="list">： <span class="me">15</span> | <span class="other"><a href="/document/14/html/gin-examples.html">14</a><span> | <span class="other"><a href="/document/13/html/gin-examples.html">13</a><span> | <span class="other"><a href="/document/12/html/gin-examples.html">12</a><span> | <span class="other"><a href="/document/11/html/gin-examples.html">11</a><span> | <span class="other"><a href="/document/10/html/gin-examples.html">10</a><span> | <span class="other"><a href="/document/9.6/html/gin-examples.html">9.6</a><span> | <span class="other"><a href="/document/9.5/html/gin-examples.html">9.5</a><span> | <span class="other"><a href="/document/9.4/html/gin-examples.html">9.4</a><span> | <span class="other"><a href="/document/9.3/html/gin-examples.html">9.3</a><span> | <span class="other"><a href="/document/9.2/html/gin-examples.html">9.2</a><span> | <span class="other"><a href="/document/9.1/html/gin-examples.html">9.1</a><span> | <span class="other"><a href="/document/9.0/html/gin-examples.html">9.0</a><span> | <span class="other"><a href="/document/8.4/html/gin-examples.html">8.4</a><span> | <span class="other"><a href="/document/8.3/html/gin-examples.html">8.3</a><span> | <span class="other"><a href="/document/8.2/html/gin-examples.html">8.2</a><span> | <span class="unsup"><a href="/document/8.1/index.html">8.1</a></span> | <span class="unsup"><a href="/document/8.0/index.html">8.0</a></span> | <span class="unsup"><a href="/document/7.4/index.html">7.4</a></span> | <span class="unsup"><a href="/document/7.3/index.html">7.3</a></span> | <span class="unsup"><a href="/document/7.2/index.html">7.2</a></span></span></div><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="4" align="center"><a accesskey="h" href="index.html">PostgreSQL 15.4文書</a></th></tr><tr><td width="10%" align="left"></td><td width="10%" align="left"></td><td width="60%" align="center"><a href="gin.html" title="第70章 GINインデックス">第70章 GINインデックス</a></td><td width="20%" align="right"></td></tr><tr><td width="10%" align="left"><a accesskey="p" href="gin-limit.html" title="70.6. 制限">前へ</a> </td><td width="10%" align="left"><a accesskey="u" href="gin.html" title="第70章 GINインデックス">上へ</a></td><td width="60%" align="center">70.7. 例</td><td width="20%" align="right"> <a accesskey="n" href="brin.html" title="第71章 BRINインデックス">次へ</a></td></tr></table><hr /></div><div class="sect1" id="GIN-EXAMPLES"><div class="titlepage"><div><div><h2 class="title" style="clear: both">70.7. 例</h2></div></div></div><!--
+ <title>Examples</title>
+--><p>
+<!--
+  The core <productname>PostgreSQL</productname> distribution
+  includes the <acronym>GIN</acronym> operator classes previously shown in
+  <xref linkend="gin-builtin-opclasses-table"/>.
+  The following <filename>contrib</filename> modules also contain
+  <acronym>GIN</acronym> operator classes:
+-->
+<span class="productname">PostgreSQL</span>のコア配布物は以前<a class="xref" href="gin-builtin-opclasses.html#GIN-BUILTIN-OPCLASSES-TABLE" title="表70.1 組み込みGIN演算子クラス">表 70.1</a>に示した<acronym class="acronym">GIN</acronym>演算子クラスを含みます。
+以下の<code class="filename">contrib</code>モジュールにも<acronym class="acronym">GIN</acronym>演算子クラスが含まれています。
+
+ </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">btree_gin</code></span></dt><dd><!--
+    <para>B-tree equivalent functionality for several data types</para>
+--><p>さまざまなデータ型に対するB-tree等価の機能</p></dd><dt><span class="term"><code class="filename">hstore</code></span></dt><dd><!--
+    <para>Module for storing (key, value) pairs</para>
+--><p>（キー、値）の組み合わせを格納するモジュール</p></dd><dt><span class="term"><code class="filename">intarray</code></span></dt><dd><!--
+    <para>Enhanced support for <type>int[]</type></para>
+--><p><code class="type">int[]</code>に対する高度サポート</p></dd><dt><span class="term"><code class="filename">pg_trgm</code></span></dt><dd><!--
+    <para>Text similarity using trigram matching</para>
+--><p>トライグラム一致を使用したテキスト類似度</p></dd></dl></div><p>
+ </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gin-limit.html" title="70.6. 制限">前へ</a> </td><td width="20%" align="center"><a accesskey="u" href="gin.html" title="第70章 GINインデックス">上へ</a></td><td width="40%" align="right"> <a accesskey="n" href="brin.html" title="第71章 BRINインデックス">次へ</a></td></tr><tr><td width="40%" align="left" valign="top">70.6. 制限 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 15.4文書">ホーム</a></td><td width="40%" align="right" valign="top"> 第71章 BRINインデックス</td></tr></table></div></body></html>

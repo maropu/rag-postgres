@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>第41章 ルールシステム</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="prev" href="event-trigger-table-rewrite-example.html" title="40.5. テーブル書き換えイベントトリガの例" /><link rel="next" href="querytree.html" title="41.1. 問い合わせツリーとは" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><style type="text/css"><!--
+h1.TITLE {clear:both;}
+.versions {
+  float:right;
+  margin-top:-0.2em;
+  margin-bottom:0.5em;
+  width: auto;
+  padding:0.4em 1em;
+  border:solid 1px #e0e0e0;
+  border-radius:0.5em;
+  background:#f3f3f3;
+  background-image:-webkit-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-moz-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-o-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:linear-gradient(#fbfbfb, #ebebeb);
+  box-shadow:0 3px 8px -3px #000;
+}
+.versions .label {
+  cursor:pointer;
+}
+.versions .label:hover {
+  text-decoration:underline;
+}
+.versions .list {
+  display:none;
+}
+.versions .list-toggle {
+  display:inline;
+}
+.versions .me {
+  padding:0 0.2em;
+  border:solid 2px #e88;
+  border-radius:0.3em;
+  background:#fbfbfb;
+  font-weight:bold;
+}
+.versions .other {
+  font-weight:bold;
+}
+.versions .unsup {
+  color:#aaa;
+}
+.versions .unsup a {
+  color:#aaa;
+}
+
+@media print {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:visited {
+    color: inherit;
+  }
+  .NAVHEADER, .versions, .NAVFOOTER {
+    display: none;
+  }
+}
+--></style><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"><!--
+  $(function(){
+      $(".versions .label").bind("click", function(){
+          $(".versions .list").toggleClass("list-toggle");
+      })
+  });
+--></script></head><body id="docContent" class="container-fluid col-10"><div class="versions"><span class="label">他のバージョンの文書</span> <span class="list">： <span class="me">15</span> | <span class="other"><a href="/document/14/html/rules.html">14</a><span> | <span class="other"><a href="/document/13/html/rules.html">13</a><span> | <span class="other"><a href="/document/12/html/rules.html">12</a><span> | <span class="other"><a href="/document/11/html/rules.html">11</a><span> | <span class="other"><a href="/document/10/html/rules.html">10</a><span> | <span class="other"><a href="/document/9.6/html/rules.html">9.6</a><span> | <span class="other"><a href="/document/9.5/html/rules.html">9.5</a><span> | <span class="other"><a href="/document/9.4/html/rules.html">9.4</a><span> | <span class="other"><a href="/document/9.3/html/rules.html">9.3</a><span> | <span class="other"><a href="/document/9.2/html/rules.html">9.2</a><span> | <span class="other"><a href="/document/9.1/html/rules.html">9.1</a><span> | <span class="other"><a href="/document/9.0/html/rules.html">9.0</a><span> | <span class="other"><a href="/document/8.4/html/rules.html">8.4</a><span> | <span class="other"><a href="/document/8.3/html/rules.html">8.3</a><span> | <span class="other"><a href="/document/8.2/html/rules.html">8.2</a><span> | <span class="other"><a href="/document/8.1/html/rules.html">8.1</a><span> | <span class="other"><a href="/document/8.0/html/rules.html">8.0</a><span> | <span class="other"><a href="/document/7.4/html/rules.html">7.4</a><span> | <span class="other"><a href="/document/7.3/programmer/rules.html">7.3</a></span> | <span class="other"><a href="/document/7.2/programmer/rules.html">7.2</a></span></span></div><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="4" align="center"><a accesskey="h" href="index.html">PostgreSQL 15.4文書</a></th></tr><tr><td width="10%" align="left"></td><td width="10%" align="left"></td><td width="60%" align="center"><a href="server-programming.html" title="パート V. サーバプログラミング">パート V. サーバプログラミング</a></td><td width="20%" align="right"></td></tr><tr><td width="10%" align="left"><a accesskey="p" href="event-trigger-table-rewrite-example.html" title="40.5. テーブル書き換えイベントトリガの例">前へ</a> </td><td width="10%" align="left"><a accesskey="u" href="server-programming.html" title="パート V. サーバプログラミング">上へ</a></td><td width="60%" align="center">第41章 ルールシステム</td><td width="20%" align="right"> <a accesskey="n" href="querytree.html" title="41.1. 問い合わせツリーとは">次へ</a></td></tr></table><hr /></div><div class="chapter" id="RULES"><div class="titlepage"><div><div><h2 class="title">第41章 ルールシステム</h2></div></div></div><div class="toc"><p><strong>目次</strong></p><dl class="toc"><dt><span class="sect1"><a href="querytree.html">41.1. 問い合わせツリーとは</a></span></dt><dt><span class="sect1"><a href="rules-views.html">41.2. ビューとルールシステム</a></span></dt><dd><dl><dt><span class="sect2"><a href="rules-views.html#RULES-SELECT">41.2.1. <code class="command">SELECT</code>ルールの動き</a></span></dt><dt><span class="sect2"><a href="rules-views.html#id-1.8.6.8.8">41.2.2. 非<code class="command">SELECT</code>文のビュールール</a></span></dt><dt><span class="sect2"><a href="rules-views.html#id-1.8.6.8.9">41.2.3. <span class="productname">PostgreSQL</span>におけるビューの能力</a></span></dt><dt><span class="sect2"><a href="rules-views.html#RULES-VIEWS-UPDATE">41.2.4. ビューの更新について</a></span></dt></dl></dd><dt><span class="sect1"><a href="rules-materializedviews.html">41.3. マテリアライズドビュー</a></span></dt><dt><span class="sect1"><a href="rules-update.html">41.4. <code class="command">INSERT</code>、<code class="command">UPDATE</code>、<code class="command">DELETE</code>についてのルール</a></span></dt><dd><dl><dt><span class="sect2"><a href="rules-update.html#id-1.8.6.10.10">41.4.1. 更新ルールの動作</a></span></dt><dt><span class="sect2"><a href="rules-update.html#RULES-UPDATE-VIEWS">41.4.2. ビューとの協調</a></span></dt></dl></dd><dt><span class="sect1"><a href="rules-privileges.html">41.5. ルールと権限</a></span></dt><dt><span class="sect1"><a href="rules-status.html">41.6. ルールおよびコマンドの状態</a></span></dt><dt><span class="sect1"><a href="rules-triggers.html">41.7. ルール対トリガ</a></span></dt></dl></div><!--
+<title>The Rule System</title>
+--><a id="id-1.8.6.2" class="indexterm"></a><a id="id-1.8.6.3" class="indexterm"></a><p>
+<!--
+     This chapter discusses the rule system in
+     <productname>PostgreSQL</productname>.  Production rule systems
+     are conceptually simple, but there are many subtle points
+     involved in actually using them.
+-->
+本章では<span class="productname">PostgreSQL</span>のルールシステムについて説明します。
+本番で稼働するルールシステムは概念としては単純ですが、実際に使ってみると、わかりにくいところが少なからずあります。
+</p><p>
+<!--
+     Some other database systems define active database rules, which
+     are usually stored procedures and triggers.  In
+     <productname>PostgreSQL</productname>, these can be implemented
+     using functions and triggers as well.
+-->
+通常それらはストアドプロシージャとトリガですが、他のいくつかのデータベースシステムは能動的データベースルールを定義しています。
+<span class="productname">PostgreSQL</span>では関数とトリガとして実装されています。
+</p><p>
+<!--
+     The rule system (more precisely speaking, the query rewrite rule
+     system) is totally different from stored procedures and triggers.
+     It modifies queries to take rules into consideration, and then
+     passes the modified query to the query planner for planning and
+     execution.  It is very powerful, and can be used for many things
+     such as query language procedures, views, and versions.  The
+     theoretical foundations and the power of this rule system are
+     also discussed in <xref linkend="ston90b"/> and <xref
+     linkend="ong90"/>.
+-->
+ルールシステム（より正確に言うと問い合わせ書き換えルールシステム）はストアドプロシージャとトリガとはまったく異なります。
+ルールシステムはルールを参照して問い合わせを修正し、修正した問い合わせを、計画作成と実行のために問い合わせプランナに渡します。
+これは非常に強力なため、問い合わせ言語プロシージャ、ビューあるいはバージョンなど多くのパターンで使用することができます。
+このルールシステムの基礎理論と能力は<a class="xref" href="biblio.html#STON90B">[ston90b]</a>および<a class="xref" href="biblio.html#ONG90">[ong90]</a>で解説されています。
+</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="event-trigger-table-rewrite-example.html" title="40.5. テーブル書き換えイベントトリガの例">前へ</a> </td><td width="20%" align="center"><a accesskey="u" href="server-programming.html" title="パート V. サーバプログラミング">上へ</a></td><td width="40%" align="right"> <a accesskey="n" href="querytree.html" title="41.1. 問い合わせツリーとは">次へ</a></td></tr><tr><td width="40%" align="left" valign="top">40.5. テーブル書き換えイベントトリガの例 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 15.4文書">ホーム</a></td><td width="40%" align="right" valign="top"> 41.1. 問い合わせツリーとは</td></tr></table></div></body></html>

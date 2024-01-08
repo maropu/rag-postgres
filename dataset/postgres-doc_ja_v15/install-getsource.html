@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>17.3. ソースの入手</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="prev" href="install-requirements.html" title="17.2. 必要条件" /><link rel="next" href="install-procedure.html" title="17.4. インストール手順" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><style type="text/css"><!--
+h1.TITLE {clear:both;}
+.versions {
+  float:right;
+  margin-top:-0.2em;
+  margin-bottom:0.5em;
+  width: auto;
+  padding:0.4em 1em;
+  border:solid 1px #e0e0e0;
+  border-radius:0.5em;
+  background:#f3f3f3;
+  background-image:-webkit-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-moz-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:-o-linear-gradient(#fbfbfb, #ebebeb);
+  background-image:linear-gradient(#fbfbfb, #ebebeb);
+  box-shadow:0 3px 8px -3px #000;
+}
+.versions .label {
+  cursor:pointer;
+}
+.versions .label:hover {
+  text-decoration:underline;
+}
+.versions .list {
+  display:none;
+}
+.versions .list-toggle {
+  display:inline;
+}
+.versions .me {
+  padding:0 0.2em;
+  border:solid 2px #e88;
+  border-radius:0.3em;
+  background:#fbfbfb;
+  font-weight:bold;
+}
+.versions .other {
+  font-weight:bold;
+}
+.versions .unsup {
+  color:#aaa;
+}
+.versions .unsup a {
+  color:#aaa;
+}
+
+@media print {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:visited {
+    color: inherit;
+  }
+  .NAVHEADER, .versions, .NAVFOOTER {
+    display: none;
+  }
+}
+--></style><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"><!--
+  $(function(){
+      $(".versions .label").bind("click", function(){
+          $(".versions .list").toggleClass("list-toggle");
+      })
+  });
+--></script></head><body id="docContent" class="container-fluid col-10"><div class="versions"><span class="label">他のバージョンの文書</span> <span class="list">： <span class="me">15</span> | <span class="other"><a href="/document/14/html/install-getsource.html">14</a><span> | <span class="other"><a href="/document/13/html/install-getsource.html">13</a><span> | <span class="other"><a href="/document/12/html/install-getsource.html">12</a><span> | <span class="other"><a href="/document/11/html/install-getsource.html">11</a><span> | <span class="other"><a href="/document/10/html/install-getsource.html">10</a><span> | <span class="other"><a href="/document/9.6/html/install-getsource.html">9.6</a><span> | <span class="other"><a href="/document/9.5/html/install-getsource.html">9.5</a><span> | <span class="other"><a href="/document/9.4/html/install-getsource.html">9.4</a><span> | <span class="other"><a href="/document/9.3/html/install-getsource.html">9.3</a><span> | <span class="other"><a href="/document/9.2/html/install-getsource.html">9.2</a><span> | <span class="other"><a href="/document/9.1/html/install-getsource.html">9.1</a><span> | <span class="other"><a href="/document/9.0/html/install-getsource.html">9.0</a><span> | <span class="other"><a href="/document/8.4/html/install-getsource.html">8.4</a><span> | <span class="other"><a href="/document/8.3/html/install-getsource.html">8.3</a><span> | <span class="other"><a href="/document/8.2/html/install-getsource.html">8.2</a><span> | <span class="other"><a href="/document/8.1/html/install-getsource.html">8.1</a><span> | <span class="other"><a href="/document/8.0/html/install-getsource.html">8.0</a><span> | <span class="other"><a href="/document/7.4/html/install-getsource.html">7.4</a><span> | <span class="other"><a href="/document/7.3/admin/install-getsource.html">7.3</a></span> | <span class="other"><a href="/document/7.2/admin/install-getsource.html">7.2</a></span></span></div><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="4" align="center"><a accesskey="h" href="index.html">PostgreSQL 15.4文書</a></th></tr><tr><td width="10%" align="left"></td><td width="10%" align="left"></td><td width="60%" align="center"><a href="installation.html" title="第17章 ソースコードからインストール">第17章 ソースコードからインストール</a></td><td width="20%" align="right"></td></tr><tr><td width="10%" align="left"><a accesskey="p" href="install-requirements.html" title="17.2. 必要条件">前へ</a> </td><td width="10%" align="left"><a accesskey="u" href="installation.html" title="第17章 ソースコードからインストール">上へ</a></td><td width="60%" align="center">17.3. ソースの入手</td><td width="20%" align="right"> <a accesskey="n" href="install-procedure.html" title="17.4. インストール手順">次へ</a></td></tr></table><hr /></div><div class="sect1" id="INSTALL-GETSOURCE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">17.3. ソースの入手</h2></div></div></div><!--
+  <title>Getting the Source</title>
+--><p>
+<!--
+   The <productname>PostgreSQL</productname> source code for released versions
+   can be obtained from the download section of our website:
+   <ulink url="https://www.postgresql.org/ftp/source/"></ulink>.
+   Download the
+   <filename>postgresql-<replaceable>version</replaceable>.tar.gz</filename>
+   or <filename>postgresql-<replaceable>version</replaceable>.tar.bz2</filename>
+   file you're interested in, then unpack it:
+-->
+リリースされたバージョンの<span class="productname">PostgreSQL</span>ソースコードは、Webサイト<a class="ulink" href="https://www.postgresql.org/ftp/source/" target="_top">https://www.postgresql.org/ftp/source/</a>のダウンロードページから入手できます。
+興味のある<code class="filename">postgresql-<em class="replaceable"><code>version</code></em>.tar.gz</code>または<code class="filename">postgresql-<em class="replaceable"><code>version</code></em>.tar.bz2</code>ファイルをダウンロードしてください。
+ファイルを入手したら、展開します。
+</p><pre class="screen">
+<strong class="userinput"><code>tar xf postgresql-<em class="replaceable"><code>version</code></em>.tar.bz2</code></strong>
+</pre><p>
+<!--
+   This will create a directory
+   <filename>postgresql-<replaceable>version</replaceable></filename> under
+   the current directory with the <productname>PostgreSQL</productname> sources.
+   Change into that directory for the rest of the installation procedure.
+-->
+これにより、カレントディレクトリ以下に<code class="filename">postgresql-<em class="replaceable"><code>version</code></em></code>というディレクトリが作成され、<span class="productname">PostgreSQL</span>のソースが展開されます。
+この後のインストール手順を行うために、このディレクトリに移動してください。
+  </p><p>
+<!--
+   Alternatively, you can use the Git version control system; see
+   <xref linkend="git"/> for more information.
+-->
+あるいは、Gitバージョン管理システムを使うこともできます。
+詳細は<a class="xref" href="git.html" title="I.1. Gitを使ってソースを入手する">I.1</a>を参照してください。
+  </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="install-requirements.html" title="17.2. 必要条件">前へ</a> </td><td width="20%" align="center"><a accesskey="u" href="installation.html" title="第17章 ソースコードからインストール">上へ</a></td><td width="40%" align="right"> <a accesskey="n" href="install-procedure.html" title="17.4. インストール手順">次へ</a></td></tr><tr><td width="40%" align="left" valign="top">17.2. 必要条件 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 15.4文書">ホーム</a></td><td width="40%" align="right" valign="top"> 17.4. インストール手順</td></tr></table></div></body></html>
